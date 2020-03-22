@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  SimpleDateFormatter.swift
 //  
 //
 //  Created by Witt, Robert on 22.03.20.
@@ -12,10 +12,15 @@ import Foundation
  */
 class SimpleDateFormatter {
     
-    /// Shared instance of this class
-    static let shared = SimpleDateFormatter()
+    private var locale: Locale
     
-    private init() {}
+    /**
+     Initializer to create a new instance of this class
+     - Parameter locale: the local to be used in string representations (defaults to current locale)
+     */
+    init(locale: Locale = Locale.current) {
+        self.locale = locale
+    }
     
     /**
      Format a date into a string with given date and time styles.
@@ -28,7 +33,7 @@ class SimpleDateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = dateStyle
         formatter.timeStyle = timeStyle
-        formatter.locale = Locale.current
+        formatter.locale = locale
         return formatter.string(from: date)
     }
     
@@ -41,23 +46,9 @@ class SimpleDateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        formatter.locale = Locale.current
+        formatter.locale = locale
         formatter.doesRelativeDateFormatting = true
         return formatter.string(from: date)
-    }
-    
-    /**
-     Format a date into a time string that is relative to another date, for example `"10 min"`, `"3 h"` etc.
-     - Parameter date: date to be formatted
-     - Parameter relativeTo: other date that `date` should be relative to
-     - Returns: the formatted date string
-     */
-    func format(date: Date, relativeTo otherDate: Date) -> String? {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .full
-        formatter.maximumUnitCount = 1
-        formatter.allowedUnits = [.year, .month, .day, .hour, .minute, .second]
-        return formatter.string(from: date, to: otherDate)
     }
     
 }
