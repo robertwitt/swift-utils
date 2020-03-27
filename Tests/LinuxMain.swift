@@ -1,9 +1,9 @@
 import XCTest
 
-import swift_utilsTests
 import DateTests
+import ErrorTests
 
 var tests = [XCTestCaseEntry]()
-tests += swift_utilsTests.allTests()
 tests += DateTests.allTests()
+tests += ErrorTests.allTests()
 XCTMain(tests)
