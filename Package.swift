@@ -22,5 +22,7 @@ let package = Package(
         .testTarget(name: "DateTests", dependencies: ["Date"]),
         .target(name: "Error"),
         .testTarget(name: "ErrorTests", dependencies: ["Error"]),
+        .target(name: "String"),
+        .testTarget(name: "StringTests", dependencies: ["String"]),
     ]
 )
