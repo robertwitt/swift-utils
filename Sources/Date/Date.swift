@@ -20,8 +20,18 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    /// String representations as date time offset, for example `"2019-12-13T09:13:47.000Z"`
+    /// String representations as date time offset, for example `"2019-12-13T09:13:47Z"`
     var dateTimeOffsetString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.string(from: self)
+    }
+    
+    
+    
+    /// String representations as date time offset, for example `"2019-12-13T09:13:47.000Z"`
+    var timestampString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000'Z'"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
@@ -43,14 +53,28 @@ extension Date {
     }
     
     /**
-     Initialize a date from a date time offset string, for example `"2019-12-13T09:13:47.000Z"`
+     Initialize a date from a date time offset string, for example `"2019-12-13T09:13:47Z"`
      - Parameter dateTimeOffsetString a string representing a date time offset
      */
     init?(dateTimeOffsetString: String) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         guard let date = dateFormatter.date(from: dateTimeOffsetString) else {
+            return nil
+        }
+        self.init(timeIntervalSince1970: date.timeIntervalSince1970)
+    }
+    
+    /**
+     Initialize a date from a date time offset string, for example `"2019-12-13T09:13:47.000Z"`
+     - Parameter timestampString a string representing a date time offset
+     */
+    init?(timestampString: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        guard let date = dateFormatter.date(from: timestampString) else {
             return nil
         }
         self.init(timeIntervalSince1970: date.timeIntervalSince1970)

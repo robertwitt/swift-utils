@@ -15,6 +15,8 @@ class DateTests: XCTestCase {
         ("testDateStringFromDate", testDateStringFromDate),
         ("testDateFromDateTimeOffsetString", testDateFromDateTimeOffsetString),
         ("testDateTimeOffsetStringFromDate", testDateTimeOffsetStringFromDate),
+        ("testDateFromTimestampString", testDateFromTimestampString),
+        ("testTimestampStringFromDate", testTimestampStringFromDate),
         ("testInvalidDate", testInvalidDate),
         ("testInvalidDateString", testInvalidDateString),
         ("testInvalidDateTimeOffsetString", testInvalidDateTimeOffsetString),
@@ -31,13 +33,23 @@ class DateTests: XCTestCase {
     }
     
     func testDateFromDateTimeOffsetString() {
-        let date = Date(dateTimeOffsetString: "2019-12-13T09:13:47.000Z")
+        let date = Date(dateTimeOffsetString: "2019-12-13T09:13:47Z")
         XCTAssertEqual(date, Date(timeIntervalSince1970: 1576228427))
     }
     
     func testDateTimeOffsetStringFromDate() {
         let date = Date(timeIntervalSince1970: 1576228427)
-        XCTAssertEqual(date.dateTimeOffsetString, "2019-12-13T09:13:47.000Z")
+        XCTAssertEqual(date.dateTimeOffsetString, "2019-12-13T09:13:47Z")
+    }
+    
+    func testDateFromTimestampString() {
+        let date = Date(timestampString: "2019-12-13T09:13:47.000Z")
+        XCTAssertEqual(date, Date(timeIntervalSince1970: 1576228427))
+    }
+    
+    func testTimestampStringFromDate() {
+        let date = Date(timeIntervalSince1970: 1576228427)
+        XCTAssertEqual(date.timestampString, "2019-12-13T09:13:47.000Z")
     }
     
     func testInvalidDate() {
