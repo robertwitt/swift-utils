@@ -9,7 +9,7 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "swift-utils",
-            targets: ["Date", "Error"]),
+            targets: ["Date", "Error", "String"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
