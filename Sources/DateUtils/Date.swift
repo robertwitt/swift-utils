@@ -10,7 +10,7 @@ import Foundation
 /**
  Extension of the `Date` class with convenience APIs
  */
-extension Date {
+public extension Date {
     
     /// String representation of this date, for example `"2019-12-13"`
     var dateString: String {

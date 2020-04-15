@@ -10,7 +10,7 @@ import Foundation
 /**
  Extension of the `String` class
  */
-extension String {
+public extension String {
     
     /// Localized string interpreted from this string
     var localizedString: String {

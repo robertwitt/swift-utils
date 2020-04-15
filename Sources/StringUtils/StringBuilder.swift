@@ -10,7 +10,7 @@ import Foundation
 /**
  API to build strings. It can also handle optionals.
  */
-class StringBuilder {
+public class StringBuilder {
     
     private var parts = [String]()
     
@@ -18,7 +18,7 @@ class StringBuilder {
      Initialize the string builder with an optional string
      - parameter initialString: optional initial string
      */
-    init(initialString: String? = nil) {
+    public init(initialString: String? = nil) {
         let _ = self.append(initialString)
     }
     
@@ -27,7 +27,7 @@ class StringBuilder {
      - parameter string: optional string
      - returns: self for method chaining
      */
-    func append(_ string: String?) -> StringBuilder {
+    public func append(_ string: String?) -> StringBuilder {
         if let string = string {
             parts.append(string)
         }
@@ -39,7 +39,7 @@ class StringBuilder {
      - parameter string: optional string
      - returns: self for method chaining
      */
-    func prepend(_ string: String?) -> StringBuilder {
+    public func prepend(_ string: String?) -> StringBuilder {
         if let string = string {
             parts.insert(string, at: 0)
         }
@@ -51,7 +51,7 @@ class StringBuilder {
      - parameter separator: an optional separator
      - returns: the built string as optional
      */
-    func build(separator: String? = nil) -> String? {
+    public func build(separator: String? = nil) -> String? {
         let joinedString = parts.joined(separator: separator ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         return joinedString != "" ? joinedString : nil
     }

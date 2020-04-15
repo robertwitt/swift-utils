@@ -10,7 +10,7 @@ import Foundation
 /**
  A simple API around Swift's `DateFormatter` and `DateComponentsFormatter` APIs.
  */
-class SimpleDateFormatter {
+public class SimpleDateFormatter {
     
     private var locale: Locale
     
@@ -18,7 +18,7 @@ class SimpleDateFormatter {
      Initializer to create a new instance of this class
      - Parameter locale: the local to be used in string representations (defaults to current locale)
      */
-    init(locale: Locale = Locale.current) {
+    public init(locale: Locale = Locale.current) {
         self.locale = locale
     }
     
@@ -29,7 +29,7 @@ class SimpleDateFormatter {
      - Parameter timeStyle: time style for the formatting
      - Returns: the formatted date string
      */
-    func format(date: Date, dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String? {
+    public func format(date: Date, dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String? {
         let formatter = DateFormatter()
         formatter.dateStyle = dateStyle
         formatter.timeStyle = timeStyle
@@ -42,7 +42,7 @@ class SimpleDateFormatter {
      - Parameter relativeDate: the date to be formatted
      - Returns: the formatted date string
      */
-    func format(relativeDate date: Date) -> String? {
+    public func format(relativeDate date: Date) -> String? {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
