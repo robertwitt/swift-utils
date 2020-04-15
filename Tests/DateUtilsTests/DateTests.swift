@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Date
+@testable import DateUtils
 
 class DateTests: XCTestCase {
     

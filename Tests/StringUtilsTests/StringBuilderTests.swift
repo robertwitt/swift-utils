@@ -8,7 +8,7 @@
 import Foundation
 
 import XCTest
-@testable import String
+@testable import StringUtils
 
 class StringBuilderTests: XCTestCase {
     

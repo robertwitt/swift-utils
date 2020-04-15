@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Error
+@testable import ErrorUtils
 
 class ErrorObjectTests: XCTestCase {
     

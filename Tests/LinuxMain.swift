@@ -1,11 +1,11 @@
 import XCTest
 
-import DateTests
-import ErrorTests
-import StringTests
+import DateUtilsTests
+import ErrorUtilsTests
+import StringUtilsTests
 
 var tests = [XCTestCaseEntry]()
-tests += DateTests.allTests()
-tests += ErrorTests.allTests()
-tests += StringTests.allTests()
+tests += DateUtilsTests.allTests()
+tests += ErrorUtilsTests.allTests()
+tests += StringUtilsTests.allTests()
 XCTMain(tests)
